@@ -2,13 +2,14 @@
 
 import { useEffect } from "react";
 import { useUnityContext, Unity } from "react-unity-webgl";
+import Script from "next/script";
 
 export default function Home() {
   const unityWebGL = useUnityContext({
-    loaderUrl: "build/builder.loader.js",
-    dataUrl: "build/builder.data",
-    frameworkUrl: "build/builder.framework.js",
-    codeUrl: "build/builder.wasm",
+    loaderUrl: "build/build.loader.js",
+    dataUrl: "build/build.data",
+    frameworkUrl: "build/build.framework.js",
+    codeUrl: "build/build.wasm",
   });
 
   useEffect(() => {
@@ -27,29 +28,28 @@ export default function Home() {
   }, [unityWebGL]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center ">
+    <main className="flex h-screen w-full flex-col items-center ">
       <div
         id="canvas-wrap"
-        className="w-[90%] h-[90%] mt-28 flex justify-center items-center"
+        className="h-screen w-screen flex justify-center items-center"
       >
-        <div id="avaturn-container" className="absolute w-[2000px] h-[1000px] ">
+        <div id="avaturn-container" className="absolute z-20 h-[90%]">
           <iframe
             id="avaturn-iframe"
             className="vto-frame rounded-[20px]"
             allow="camera *; microphone *"
-          ></iframe>
+          />
         </div>
-        <div id="unity-container" className="w-full h-full">
+        <div id="unity-container" className="w-full h-full z-10">
           <Unity
             unityProvider={unityWebGL.unityProvider}
             className="w-full h-full"
           />
         </div>
       </div>
-      <script src="data/Global.js"></script>
-      <script src="data/AvaturnFrame.js"></script>
-      <script src="Build/builder.loader.js"></script>
-      <script src="data/header.js"></script>
+      <Script src="data/Global.js" />
+      <Script src="data/AvaturnFrame.js" />
+      <Script src="Build/builder.loader.js" />
     </main>
   );
 }
