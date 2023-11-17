@@ -36,12 +36,6 @@ export default function Home() {
         id="canvas-wrap"
         className="h-screen w-screen flex justify-center items-center"
       >
-        {unityWebGL.isLoaded ? null : (
-          <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
-            <p>Now Loading...</p>
-            <p>{Math.round(unityWebGL.loadingProgression * 100)}%</p>
-          </div>
-        )}
         <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
           <iframe
             id="avaturn-iframe"
