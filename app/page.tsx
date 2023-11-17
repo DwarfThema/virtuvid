@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUnityContext, Unity } from "react-unity-webgl";
 import Script from "next/script";
 import { UnityContextHook } from "react-unity-webgl/distribution/types/unity-context-hook";
@@ -12,6 +12,8 @@ export default function Home() {
     frameworkUrl: "build/Virtuvid.framework.js",
     codeUrl: "build/Virtuvid.wasm",
   });
+
+  const [loading, setLoading] = useState();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -26,14 +28,14 @@ export default function Home() {
         document.body.removeChild(script);
       };
     }
-  }, [unityWebGL]);
+  }, []);
 
   return (
     <main className="flex h-screen w-full flex-col items-center ">
-      {(window as any).unityWebGLInstance.isLoaded ? null : (
+      {unityWebGL.isLoaded ? null : (
         <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
           <p>Now Loading...</p>
-          <p>{(window as any).unityWebGLInstance.loadingProgression}%</p>
+          <p>{Math.round(unityWebGL.loadingProgression * 100)}%</p>
         </div>
       )}
       <div
