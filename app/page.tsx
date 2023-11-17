@@ -29,9 +29,15 @@ export default function Home() {
 
   return (
     <main className="flex h-screen w-full flex-col items-center ">
+      {unityWebGL.isLoaded ? null : (
+        <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
+          <p>Now Loading...</p>
+          <p>{Math.round(unityWebGL.loadingProgression * 100)}%</p>
+        </div>
+      )}
       <div
         id="canvas-wrap"
-        className="h-screen w-screen flex justify-center items-center"
+        className="h-screen w-screen                                                                                                                                                                                 flex justify-center items-center"
       >
         <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
           <iframe
@@ -41,7 +47,7 @@ export default function Home() {
             allow="camera *; microphone *"
           />
         </div>
-        <div id="unity-container" className="w-full h-full z-20">
+        <div id="unity-container" className="absolute w-full h-full z-20">
           <Unity
             unityProvider={unityWebGL.unityProvider}
             className="w-full h-full"
