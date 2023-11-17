@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUnityContext, Unity } from "react-unity-webgl";
 import Script from "next/script";
 import { UnityContextHook } from "react-unity-webgl/distribution/types/unity-context-hook";
@@ -12,8 +12,6 @@ export default function Home() {
     frameworkUrl: "build/Virtuvid.framework.js",
     codeUrl: "build/Virtuvid.wasm",
   });
-
-  const [loading, setLoading] = useState();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -32,6 +30,12 @@ export default function Home() {
 
   return (
     <main className="flex h-screen w-full flex-col items-center ">
+      {unityWebGL.isLoaded ? null : (
+        <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
+          <p>Now Loading...</p>
+          <p>{Math.round(unityWebGL.loadingProgression * 100)}%</p>
+        </div>
+      )}
       <div
         id="canvas-wrap"
         className="h-screen w-screen flex justify-center items-center"
