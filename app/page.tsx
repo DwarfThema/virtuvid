@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { useUnityContext, Unity } from "react-unity-webgl";
 import Script from "next/script";
-import { UnityContextHook } from "react-unity-webgl/distribution/types/unity-context-hook";
 
 export default function Home() {
   const unityWebGL = useUnityContext({
@@ -15,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      (window as any).unityWebGLInstance = unityWebGL as UnityContextHook;
+      (window as any).unityWebGLInstance = unityWebGL;
 
       const script = document.createElement("script");
       script.src = "data/AvaturnFrame.js";
@@ -26,16 +25,10 @@ export default function Home() {
         document.body.removeChild(script);
       };
     }
-  }, []);
+  }, [unityWebGL]);
 
   return (
     <main className="flex h-screen w-full flex-col items-center ">
-      {unityWebGL.isLoaded ? null : (
-        <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
-          <p>Now Loading...</p>
-          <p>{Math.round(unityWebGL.loadingProgression * 100)}%</p>
-        </div>
-      )}
       <div
         id="canvas-wrap"
         className="h-screen w-screen flex justify-center items-center"
