@@ -6,10 +6,10 @@ import Script from "next/script";
 
 export default function Home() {
   const unityWebGL = useUnityContext({
-    loaderUrl: "build/build.loader.js",
-    dataUrl: "build/build.data",
-    frameworkUrl: "build/build.framework.js",
-    codeUrl: "build/build.wasm",
+    loaderUrl: "build/Virtuvid.loader.js",
+    dataUrl: "build/Virtuvid.data",
+    frameworkUrl: "build/Virtuvid.framework.js",
+    codeUrl: "build/Virtuvid.wasm",
   });
 
   useEffect(() => {
@@ -33,14 +33,15 @@ export default function Home() {
         id="canvas-wrap"
         className="h-screen w-screen flex justify-center items-center"
       >
-        <div id="avaturn-container" className="absolute z-20 h-[90%]">
+        <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
           <iframe
             id="avaturn-iframe"
-            className="vto-frame rounded-[20px]"
+            className="vto-frame"
+            style={{ zIndex: 10 }}
             allow="camera *; microphone *"
           />
         </div>
-        <div id="unity-container" className="w-full h-full z-10">
+        <div id="unity-container" className="w-full h-full z-20">
           <Unity
             unityProvider={unityWebGL.unityProvider}
             className="w-full h-full"

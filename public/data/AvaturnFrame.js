@@ -4,6 +4,7 @@ function setupIframe(link) {
   document.addEventListener("message", subscribe);
 
   function subscribe(event) {
+    iframeContainer.style.display = "block";
     /* Here we process the events from the iframe */
     const json = parse(event);
     if (
@@ -26,14 +27,13 @@ function setupIframe(link) {
         console.log("error, wrong url type " + data.urlType);
         url = "error";
       }
-      console.log(`Avatar URL: ${url}`);
       window.unityWebGLInstance.sendMessage(
         "AvatarReceiver",
         "ReceiveAvatarLink",
         url
       );
 
-      iframeContainer.style.display = "none";
+      iframeContainer.style.display = 30;
     }
   }
 
@@ -59,11 +59,9 @@ function setupIframe(link) {
 }
 
 function displayIframe() {
-  console.log("Display");
-  iframeContainer.style.display = "block";
+  iframeContainer.style.zIndex = 30;
 }
 
 function hideIframe() {
-  console.log("Hide");
-  iframeContainer.style.display = "none";
+  iframeContainer.style.zIndex = 10;
 }

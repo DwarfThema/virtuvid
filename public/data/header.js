@@ -14,8 +14,6 @@ var config = {
 };
 
 createUnityInstance(canvas, config, (progress) => {
-  console.log("canvas!!!!!!! " + canvas);
-  console.log("config!!!!!!! " + config);
   //progressBarFull.style.width = 100 * progress + "%";
 })
   .then((unityInstance) => {
