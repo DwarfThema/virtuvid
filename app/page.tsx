@@ -41,6 +41,13 @@ export default function Home() {
             allow="camera *; microphone *"
           />
         </div>
+        {unityWebGL.isLoaded ? null : (
+          <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
+            <p>Now Loading...</p>
+            <p>{Math.floor(unityWebGL.loadingProgression)}%</p>
+          </div>
+        )}
+
         <div id="unity-container" className="w-full h-full z-20">
           <Unity
             unityProvider={unityWebGL.unityProvider}
