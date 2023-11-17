@@ -4,7 +4,6 @@ function setupIframe(link) {
   document.addEventListener("message", subscribe);
 
   function subscribe(event) {
-    iframeContainer.style.display = "block";
     /* Here we process the events from the iframe */
     const json = parse(event);
     if (
@@ -33,7 +32,8 @@ function setupIframe(link) {
         url
       );
 
-      iframeContainer.style.display = 30;
+      iframeContainer.style.zIndex = 30;
+      iframeContainer.style.display = "none";
     }
   }
 
@@ -60,8 +60,10 @@ function setupIframe(link) {
 
 function displayIframe() {
   iframeContainer.style.zIndex = 30;
+  iframeContainer.style.display = "block";
 }
 
 function hideIframe() {
   iframeContainer.style.zIndex = 10;
+  iframeContainer.style.display = "none";
 }
