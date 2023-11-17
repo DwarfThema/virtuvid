@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useUnityContext, Unity } from "react-unity-webgl";
 import Script from "next/script";
+import { UnityContextHook } from "react-unity-webgl/distribution/types/unity-context-hook";
 
 export default function Home() {
   const unityWebGL = useUnityContext({
@@ -14,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      (window as any).unityWebGLInstance = unityWebGL;
+      (window as any).unityWebGLInstance = unityWebGL as UnityContextHook;
 
       const script = document.createElement("script");
       script.src = "data/AvaturnFrame.js";
@@ -29,6 +30,12 @@ export default function Home() {
 
   return (
     <main className="flex h-screen w-full flex-col items-center ">
+      {(window as any).unityWebGLInstance.isLoaded ? null : (
+        <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
+          <p>Now Loading...</p>
+          <p>{(window as any).unityWebGLInstance.loadingProgression}%</p>
+        </div>
+      )}
       <div
         id="canvas-wrap"
         className="h-screen w-screen flex justify-center items-center"
@@ -41,13 +48,6 @@ export default function Home() {
             allow="camera *; microphone *"
           />
         </div>
-        {unityWebGL.isLoaded ? null : (
-          <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
-            <p>Now Loading...</p>
-            <p>{Math.floor(unityWebGL.loadingProgression)}%</p>
-          </div>
-        )}
-
         <div id="unity-container" className="w-full h-full z-20">
           <Unity
             unityProvider={unityWebGL.unityProvider}
