@@ -37,7 +37,7 @@ export default function Home() {
       )}
       <div
         id="canvas-wrap"
-        className="h-screen w-screen flex justify-center items-center"
+        className="h-full w-full flex justify-center items-center"
       >
         <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
           <iframe
@@ -47,7 +47,7 @@ export default function Home() {
             allow="camera *; microphone *"
           />
         </div>
-        <div id="unity-container" className="w-screen h-screen z-20">
+        <div id="unity-container" className="w-full h-full z-20">
           <Unity
             unityProvider={unityWebGL.unityProvider}
             className="w-full h-full"
