@@ -47,7 +47,7 @@ export default function Home() {
             allow="camera *; microphone *"
           />
         </div>
-        <div id="unity-container" className="w-full h-full z-20">
+        <div id="unity-container" className="w-screen h-screen z-20">
           <Unity
             unityProvider={unityWebGL.unityProvider}
             className="w-full h-full"
