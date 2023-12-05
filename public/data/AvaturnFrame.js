@@ -34,7 +34,7 @@ function setupIframe(link) {
         url
       );
 
-      iframeContainer.style.zIndex = 30;
+      iframeContainer.style.zIndex = 0;
       iframeContainer.style.display = "none";
     }
   }
@@ -66,6 +66,6 @@ function displayIframe() {
 }
 
 function hideIframe() {
-  iframeContainer.style.zIndex = 10;
+  iframeContainer.style.zIndex = 0;
   iframeContainer.style.display = "none";
 }
