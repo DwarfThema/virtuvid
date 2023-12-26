@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useUnityContext, Unity } from "react-unity-webgl";
 import Script from "next/script";
 
@@ -26,6 +26,17 @@ export default function Home() {
       };
     }
   }, [unityWebGL]);
+
+  const handleBlobUrlScore = useCallback((score : any) => {
+    console.log(score);
+  }, []);
+
+  useEffect(() => {
+    unityWebGL.addEventListener("ExportBlob", handleBlobUrlScore);
+    return () => {
+      unityWebGL.removeEventListener("ExportBlob", handleBlobUrlScore);
+    };
+  }, [unityWebGL.addEventListener, unityWebGL.removeEventListener, handleBlobUrlScore]);
 
   return (
     <main className="flex h-screen w-full flex-col items-center ">
