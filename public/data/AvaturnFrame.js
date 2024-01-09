@@ -4,8 +4,6 @@ function setupIframe(link) {
   document.addEventListener("message", subscribe);
 
   function subscribe(event) {
-    iframeContainer.style.display = "block";
-
     /* Here we process the events from the iframe */
     const json = parse(event);
     if (
