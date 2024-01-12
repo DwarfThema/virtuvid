@@ -1,14 +1,22 @@
+import { uiStateAtom } from "@/libs/client/recoilAtom";
 import { TemplateAssets } from "@/libs/client/templateAssets";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
 
 export default function TemplateWeb({
   setTemplate,
+  setMainUi,
+  setStartUi,
   unityWebGL,
 }: {
   setTemplate: (value: boolean) => void;
+  setMainUi: (value: boolean) => void;
+  setStartUi: (value: boolean) => void;
   unityWebGL: any;
 }) {
+  const [uiState, setUiState] = useRecoilState(uiStateAtom);
+
   const [currentIndex, setCurrentIndex] = useState(
     Math.floor(TemplateAssets.length / 2)
   );
@@ -18,17 +26,21 @@ export default function TemplateWeb({
   };
 
   const handleTemplateSeclection = () => {
+    setUiState(3);
     setTemplate(false);
+    setMainUi(true);
+    setStartUi(false);
     unityWebGL.sendMessage("UIController", "TemplateFinFn", currentIndex);
 
     setCurrentIndex(Math.floor(TemplateAssets.length / 2));
   };
 
   return (
-    <div className="fixed w-full h-full z-30 flex flex-col items-center justify-center bg-stone-900 text-white">
+    <div className="fixed w-full h-full z-40 flex flex-col items-center justify-center bg-stone-900 text-white">
       <button
         className="absolute w-full h-full z-30"
         onClick={() => {
+          setUiState(1);
           setTemplate(false);
         }}
       />
