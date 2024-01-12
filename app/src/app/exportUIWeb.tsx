@@ -34,8 +34,8 @@ export default function ExportUiWeb({ unityWebGL }: { unityWebGL: any }) {
 
   return (
     <div className="absolute w-full h-full z-20 flex flex-col items-center justify-center bg-stone-900 text-black  font-medium">
-      <div className="flex flex-col justify-between items-center h-[80%] w-[100%] text-sm mb-9">
-        <div className="text-[19px] font-bold mt-16 text-white text-center">
+      <div className="flex flex-col justify-between items-center h-[87%] w-[100%] text-sm">
+        <div className="text-[19px] font-bold mt-[7%] text-white text-center">
           {typeof currentPhrase === "object" && currentPhrase.a}
           <br />
           {typeof currentPhrase === "object" && currentPhrase.b}
@@ -90,7 +90,7 @@ export default function ExportUiWeb({ unityWebGL }: { unityWebGL: any }) {
 
           <button
             onClick={OnGoToHome}
-            className=" bg-white flex w-[105px] h-[45px] items-center justify-center font-bold rounded-3xl mt-6 text-base"
+            className=" bg-white flex w-[105px] h-[45px] items-center justify-center font-bold rounded-3xl mt-3 text-base"
           >
             <span className="pr-[2px] ">Home</span>
             <svg

@@ -38,16 +38,18 @@ export default function MainUiWeb({ unityWebGL }: { unityWebGL: any }) {
           >
             <span>Face</span>
           </button>{" "}
+          <div className="w-[5px]" />
           <button
             onClick={OnBustCamFn}
-            className={`mx-2 bg-black flex items-center justify-center rounded-xl transition-all duration-500 ease-in-out ${
+            className={`bg-black flex items-center justify-center rounded-xl transition-all duration-500 ease-in-out ${
               camState === 2
                 ? `w-[63px] h-[38px] bg-opacity-100 text-sm`
                 : `w-[55px] h-[32px] bg-opacity-50 text-xs`
             }`}
           >
             <span>Bust</span>
-          </button>{" "}
+          </button>
+          <div className="w-[5px]" />
           <button
             onClick={OnFullCamFn}
             className={`bg-black flex items-center justify-center rounded-xl transition-all duration-500 ease-in-out ${

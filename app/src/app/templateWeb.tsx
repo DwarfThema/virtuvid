@@ -74,7 +74,7 @@ export default function TemplateWeb({
         ))}
       </div>
       <button
-        className="absolute bottom-[10%] bg-white text-black px-[16px] py-[6px] flex justify-center items-center rounded-full z-40"
+        className="absolute bottom-[10%] bg-white text-black px-[16px] flex justify-center items-center rounded-full z-40"
         onClick={handleNext}
       >
         <span className="block mr-1 font-semibold">Next</span>

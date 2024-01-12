@@ -10,17 +10,6 @@ export default function RecordingLoading({
   animtime: number;
   isRecording: boolean;
 }) {
-  const [uiState, setUiState] = useRecoilState(uiStateAtom);
-
-  useEffect(() => {
-    console.log(isRecording);
-
-    if (animtime >= 1) {
-      setUiState(5);
-      console.log("5번째 가즈아");
-    }
-  }, [animtime, isRecording]);
-
   return (
     <div
       id="UI-Recording"

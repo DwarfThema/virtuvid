@@ -181,7 +181,7 @@ export default function VirtuvidApp() {
           uiState === 4
             ? isRecording
               ? "z-10 w-[100%] h-[100%]"
-              : "z-30 top-[200px] w-[280px] h-[450px]"
+              : "z-30 top-[20%] w-[55%] h-[50%]"
             : "z-10 w-[100%] h-[100%]"
         }
         
