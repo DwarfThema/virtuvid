@@ -9,7 +9,7 @@ import MainUiWeb from "./mainUIweb";
 import { useRecoilState } from "recoil";
 import { uiStateAtom } from "@/libs/client/recoilAtom";
 import ExportUiWeb from "./exportUIWeb";
-import { RecordingPhrases } from "@/libs/client/phrases";
+import Image from "next/image";
 
 export default function VirtuvidApp() {
   const [uiState, setUiState] = useRecoilState(uiStateAtom);
@@ -95,7 +95,7 @@ export default function VirtuvidApp() {
   return (
     <>
       {/* Loading Side */}
-      {unityWebGL.isLoaded ? null : <LoadingWeb unityWebGL={unityWebGL} />}
+      <LoadingWeb unityWebGL={unityWebGL} />
 
       {/* StartUI Side */}
       {unityWebGL.isLoaded ? (
