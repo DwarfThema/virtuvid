@@ -1,5 +1,7 @@
 import { camStateAtom, uiStateAtom } from "@/libs/client/recoilAtom";
+import Image from "next/image";
 import { useRecoilState } from "recoil";
+import Logo from "../../../public/images/Virtuvid_Logo_White.png";
 
 export default function MainUiWeb({ unityWebGL }: { unityWebGL: any }) {
   const [uiState, setUiState] = useRecoilState(uiStateAtom);
@@ -25,7 +27,9 @@ export default function MainUiWeb({ unityWebGL }: { unityWebGL: any }) {
 
   return (
     <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center  text-white  font-medium">
-      <div className="h-[10%] w-[100%] bg-black opacity-50" />
+      <div className="h-[10%] w-[100%] bg-black opacity-50 flex flex-col items-end justify-end">
+        <Image src={Logo} alt="Logo" className="w-[25%] m-3" />
+      </div>
       <div className="flex flex-col justify-end items-center h-[80%] w-[100%]  py-4">
         <div className="w-[200px] h-[45px] flex items-center justify-center bg-black bg-opacity-40 rounded-2xl">
           <button
