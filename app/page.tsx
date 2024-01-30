@@ -19,6 +19,7 @@ import { QuestionContents } from "./src/web/questionContents";
 import { BtnStart } from "./src/web/BtnStart";
 import Howto from "./src/web/howto";
 import { ExportBtn } from "./src/web/exportBtn";
+import { isMobile } from "react-device-detect";
 
 export default function Home() {
   return (
@@ -119,7 +120,9 @@ export default function Home() {
               muted
               playsInline
               controlsList="nodownload nofullscreen"
-              className="w-screen h-[450px]"
+              className={`w-screen h-[450px] ${
+                isMobile ? `object-cover` : `object-contain`
+              } `}
             >
               <source src="/web/videos/vid_middle.mp4" type="video/mp4" />
             </video>
