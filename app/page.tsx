@@ -49,13 +49,15 @@ export default function Home() {
             <BtnStart bg className="mt-12" />
           </div>
           <video
-            src="/web/videos/vid_header.mp4"
             autoPlay
             loop
             playsInline
+            muted
             controlsList="nodownload nofullscreen"
             className="w-screen h-[650px] object-cover"
-          />
+          >
+            <source src="/web/videos/vid_header.mp4" type="video/mp4" />
+          </video>
         </div>
         <div className="w-screen text-black">
           <div className="font-bold flex flex-col justify-center items-center mt-16">
@@ -112,13 +114,15 @@ export default function Home() {
           </div>
           <div>
             <video
-              src="/web/videos/vid_middle.mp4"
               autoPlay
               loop
+              muted
               playsInline
               controlsList="nodownload nofullscreen"
               className="w-screen h-[450px]"
-            />
+            >
+              <source src="/web/videos/vid_middle.mp4" type="video/mp4" />
+            </video>
           </div>
           <div className="mt-10 flex flex-col items-center justify-center">
             <div className="text-[25px] w-[300px] text-center font-extrabold leading-7">
