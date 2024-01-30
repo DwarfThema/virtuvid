@@ -57,7 +57,7 @@ export default function Home() {
             className="w-screen h-[650px] object-cover"
           />
         </div>
-        <div className="w-screen">
+        <div className="w-screen text-black">
           <div className="font-bold flex flex-col justify-center items-center mt-16">
             <div className="text-[15px]">
               요즘 유행하는 챌린지 나도 하고싶은데
@@ -171,7 +171,7 @@ export default function Home() {
           </div>
         </div>
         <div
-          className="mt-[50px] 
+          className="mt-[50px] text-black
         w-[300px]
         lg:w-[550px]
         "
