@@ -15,6 +15,10 @@ import mainLogo from "../public/app/Virtuvid_Logo_White.png";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import Link from "next/link";
+import { QuestionContents } from "./src/web/questionContents";
+import { BtnStart } from "./src/web/BtnStart";
+import Howto from "./src/web/howto";
+import { ExportBtn } from "./src/web/exportBtn";
 
 export default function Home() {
   return (
@@ -27,7 +31,7 @@ export default function Home() {
             className="border-3 border-white border-solid mr-2"
           />
         </header>
-        <div className="w-full h-[650px] mt-[60px] block ">
+        <div className="w-full h-[650px] mt-[60px] block drop-shadow-lg">
           <div
             className="
           text-[25px] lg:text-[50px] 
@@ -73,7 +77,7 @@ export default function Home() {
             <Image
               src={Question}
               alt="Question"
-              className="min-w-[10px] max-w-[350px] "
+              className="min-w-[10px] max-w-[350px] drop-shadow-xl"
             />
           </div>
           <div className="mt-10 flex flex-col items-center justify-center">
@@ -126,10 +130,10 @@ export default function Home() {
               <br /> 완성한 영상을 친구들에게 공유해요. 지금 당장!🚨
             </div>
             <div className="mt-4 w-[500px] flex justify-center">
-              <ExportBtn insta />
-              <ExportBtn tiktok />
-              <ExportBtn youtube />
-              <ExportBtn />
+              <ExportBtn imgSrc={logo_Insta} insta />
+              <ExportBtn imgSrc={logo_Tiktok} tiktok />
+              <ExportBtn imgSrc={logo_youtube} youtube />
+              <ExportBtn imgSrc={logo_x} />
             </div>
             <BtnStart className="mt-9" />
           </div>
@@ -205,118 +209,5 @@ export default function Home() {
         </footer>
       </main>
     </RecoilRoot>
-  );
-}
-
-export function BtnStart({
-  bg,
-  borderLine,
-  ...props
-}: { bg?: boolean; borderLine?: boolean } & React.HTMLAttributes<HTMLElement>) {
-  return (
-    <div {...props}>
-      <Link
-        href="/app"
-        className={` ${bg ? `px-5 py-3 text-2xl` : `px-3 py-2`} ${
-          borderLine ? `border-2` : null
-        }  bg-mainCol rounded-full flex items-center text-white font-semibold drop-shadow-lg`}
-      >
-        시작하기
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="white"
-          viewBox="0 0 24 24"
-          strokeWidth="1"
-          stroke="currentColor"
-          className={`${bg ? `w-6 h-6` : `w-5 h-5`} ml-1`}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
-          />
-        </svg>
-      </Link>
-    </div>
-  );
-}
-
-export function ExportBtn({
-  insta,
-  tiktok,
-  youtube,
-  x,
-}: {
-  insta?: boolean;
-  tiktok?: boolean;
-  youtube?: boolean;
-  x?: boolean;
-}) {
-  return (
-    <div className="flex flex-col justify-center items-center mx-3">
-      <div className="p-3 border-2 border-gray-300 border-solid rounded-full">
-        <Image
-          src={
-            insta
-              ? logo_Insta
-              : tiktok
-              ? logo_Tiktok
-              : youtube
-              ? logo_youtube
-              : logo_x
-          }
-          alt="export"
-          className="w-[25px]"
-        />
-      </div>
-      <div className="text-sm">
-        {insta ? "Instagram" : tiktok ? "Tiktok" : youtube ? "Youtube" : "X"}
-      </div>
-    </div>
-  );
-}
-
-export function Howto({
-  title,
-  contents,
-  imgSrc,
-}: {
-  title: string;
-  contents: string;
-  imgSrc: StaticImageData;
-}) {
-  return (
-    <div className="my-6 flex flex-col justify-center items-center text-white">
-      <div className="font-bold">{title}</div>
-      <div className="whitespace-pre-wrap text-center mt-1 mb-3">
-        {contents}
-      </div>
-      <Image src={imgSrc} alt={title} />
-    </div>
-  );
-}
-
-export function QuestionContents({
-  question,
-  answer,
-}: {
-  question: string;
-  answer: string;
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="my-2">
-      <button
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
-      >
-        {question}
-      </button>
-      {isOpen ? (
-        <div className="whitespace-pre-wrap text-sm p-4 mb-5">{answer}</div>
-      ) : null}
-    </div>
   );
 }
