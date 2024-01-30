@@ -23,20 +23,20 @@ import { ExportBtn } from "./src/web/exportBtn";
 export default function Home() {
   return (
     <RecoilRoot>
-      <main className="flex h-screen w-full flex-col items-center ">
-        <header className="fixed bg-mainCol w-full h-[60px] z-30 flex items-center justify-between">
+      <main className="flex h-screen w-screen flex-col items-center ">
+        <header className="fixed bg-mainCol w-screen h-[60px] z-30 flex items-center justify-between">
           <Image src={mainLogo} alt="Logo" className="w-[100px] mx-3" />
           <BtnStart
             borderLine
             className="border-3 border-white border-solid mr-2"
           />
         </header>
-        <div className="w-full h-[650px] mt-[60px] block drop-shadow-lg">
+        <div className="w-screen h-[650px] mt-[60px] block drop-shadow-lg">
           <div
             className="
           text-[25px] lg:text-[50px] 
           leading-[35px] lg:leading-[70px]
-          absolute w-full h-[650px] z-20 flex justify-center items-center flex-col font-extrabold text-white drop-shadow-lg  "
+          absolute w-screen h-[650px] z-20 flex justify-center items-center flex-col font-extrabold text-white drop-shadow-lg  "
           >
             <div>
               <span className="text-mainCol">단 3장의</span>
@@ -57,7 +57,7 @@ export default function Home() {
             className="w-full h-[650px] object-cover"
           />
         </div>
-        <div>
+        <div className="w-screen">
           <div className="font-bold flex flex-col justify-center items-center mt-16">
             <div className="text-[15px]">
               요즘 유행하는 챌린지 나도 하고싶은데
@@ -117,7 +117,7 @@ export default function Home() {
               loop
               playsInline
               controlsList="nodownload nofullscreen"
-              className="w-full h-[450px] object-cover"
+              className="w-screen h-[450px] object-cover"
             />
           </div>
           <div className="mt-10 flex flex-col items-center justify-center">
@@ -129,7 +129,7 @@ export default function Home() {
               <br /> 혼자 볼 수 없겠죠?
               <br /> 완성한 영상을 친구들에게 공유해요. 지금 당장!🚨
             </div>
-            <div className="mt-4 w-[500px] flex justify-center">
+            <div className="mt-4 w-screen flex justify-center">
               <ExportBtn imgSrc={logo_Insta} insta />
               <ExportBtn imgSrc={logo_Tiktok} tiktok />
               <ExportBtn imgSrc={logo_youtube} youtube />
@@ -138,7 +138,7 @@ export default function Home() {
             <BtnStart className="mt-9" />
           </div>
         </div>
-        <div className=" mt-20 bg-neutral-700 w-full flex flex-col justify-center items-center p-10">
+        <div className=" mt-20 bg-neutral-700 w-screen flex flex-col justify-center items-center p-10">
           <span className="text-mainCol text-[30px] font-semibold">
             버츄비드 사용법
           </span>
