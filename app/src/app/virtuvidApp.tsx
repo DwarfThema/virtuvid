@@ -11,7 +11,9 @@ import { uiStateAtom } from "@/libs/client/recoilAtom";
 import ExportUiWeb from "./exportUIWeb";
 import Image from "next/image";
 
-export default function VirtuvidApp() {
+export default function VirtuvidApp({
+  ...props
+}: React.HTMLAttributes<HTMLElement>) {
   const [uiState, setUiState] = useRecoilState(uiStateAtom);
 
   //ref For Unity
@@ -93,7 +95,7 @@ export default function VirtuvidApp() {
   }, [unityWebGL.isLoaded]);
 
   return (
-    <>
+    <main>
       {/* Loading Side */}
       <LoadingWeb unityWebGL={unityWebGL} />
 
@@ -205,6 +207,6 @@ export default function VirtuvidApp() {
       <Script src="data/Global.js" />
       <Script src="data/AvaturnFrame.js" />
       <Script src="Build/builder.loader.js" />
-    </>
+    </main>
   );
 }

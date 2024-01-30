@@ -54,7 +54,7 @@ export default function Home() {
             loop
             playsInline
             controlsList="nodownload nofullscreen"
-            className="w-full h-[650px] object-cover"
+            className="w-screen h-[650px] object-cover"
           />
         </div>
         <div className="w-screen">
@@ -117,7 +117,7 @@ export default function Home() {
               loop
               playsInline
               controlsList="nodownload nofullscreen"
-              className="w-screen h-[450px] object-cover"
+              className="w-screen h-[450px]"
             />
           </div>
           <div className="mt-10 flex flex-col items-center justify-center">
