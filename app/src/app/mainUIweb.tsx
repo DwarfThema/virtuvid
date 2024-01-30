@@ -1,7 +1,7 @@
 import { camStateAtom, uiStateAtom } from "@/libs/client/recoilAtom";
 import Image from "next/image";
 import { useRecoilState } from "recoil";
-import Logo from "../../../public/images/Virtuvid_Logo_White.png";
+import Logo from "../../../public/app/Virtuvid_Logo_White.png";
 
 export default function MainUiWeb({ unityWebGL }: { unityWebGL: any }) {
   const [uiState, setUiState] = useRecoilState(uiStateAtom);

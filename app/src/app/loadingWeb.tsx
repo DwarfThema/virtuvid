@@ -1,6 +1,6 @@
 import { LoadingPhrases } from "@/libs/client/phrases";
 import { useEffect, useState } from "react";
-import Logo from "../../../public/images/Virtuvid_Logo_White.png";
+import Logo from "../../../public/app/Virtuvid_Logo_White.png";
 import Image from "next/image";
 
 export default function LoadingWeb({ unityWebGL }: { unityWebGL: any }) {
@@ -47,7 +47,7 @@ export default function LoadingWeb({ unityWebGL }: { unityWebGL: any }) {
       <div
         className={` ${
           !isMainFin ? `opacity-100` : `opacity-0`
-        } transition-opacity ease-in-out duration-[1500ms] absolute w-full h-full z-40 bg-[url('/images/Gradient.jpg')] bg-cover  flex justify-center items-center`}
+        } transition-opacity ease-in-out duration-[1500ms] absolute w-full h-full z-40 bg-[url('/app/Gradient.jpg')] bg-cover  flex justify-center items-center`}
       >
         <Image src={Logo} alt="Virtuvid Logo" className="w-[70%]" />
       </div>

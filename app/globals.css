@@ -20,6 +20,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: white;
   width: 100%;
+  line-height: 21px;
 }
 
 #avaturn-iframe {
