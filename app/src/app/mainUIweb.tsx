@@ -8,19 +8,23 @@ export default function MainUiWeb({ unityWebGL }: { unityWebGL: any }) {
   const [camState, setCamState] = useRecoilState(camStateAtom);
 
   const OnFaceCamFn = () => {
+    unityWebGL.sendMessage("UIController", "ResetAvatarFn");
     unityWebGL.sendMessage("UIController", "FaceCamFn");
     setCamState(1);
   };
   const OnBustCamFn = () => {
+    unityWebGL.sendMessage("UIController", "ResetAvatarFn");
     unityWebGL.sendMessage("UIController", "BreastCamFn");
     setCamState(2);
   };
   const OnFullCamFn = () => {
+    unityWebGL.sendMessage("UIController", "ResetAvatarFn");
     unityWebGL.sendMessage("UIController", "FullBodyCamFn");
     setCamState(0);
   };
 
   const OnRecordingFn = () => {
+    unityWebGL.sendMessage("UIController", "ResetAvatarFn");
     unityWebGL.sendMessage("UIController", "RecordFn");
     setUiState(4);
   };
