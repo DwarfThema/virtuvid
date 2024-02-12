@@ -24,7 +24,7 @@ import { isMobile } from "react-device-detect";
 export default function Home() {
   return (
     <main className="flex h-screen w-full flex-col items-center ">
-      <header className="fixed bg-mainCol w-full h-[60px] z-30 flex items-center justify-between">
+      <header className=" fixed bg-mainCol w-full h-[60px] z-30 flex items-center justify-between shadow-md">
         <Image src={mainLogo} alt="Logo" className="w-[100px] mx-3" />
         <BtnStart
           borderLine
