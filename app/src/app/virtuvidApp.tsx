@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 import { uiStateAtom } from "@/libs/client/recoilAtom";
 import ExportUiWeb from "./exportUIWeb";
 import Image from "next/image";
+import { isMobile } from "react-device-detect";
 
 export default function VirtuvidApp({
   ...props
@@ -163,17 +164,18 @@ export default function VirtuvidApp({
       </div>
 
       {/* Unity Side */}
-      <div className="h-full w-full                                                                                                                                                                                 flex justify-center items-center">
-        <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
-          <iframe
-            id="avaturn-iframe"
-            className="vto-frame"
-            allow="camera *; microphone *"
-          />
-        </div>
-        <div
-          id="unity-container"
-          className={`absolute 
+      {isMobile ? (
+        <div className="h-screen w-screen                                                                                                                                                                                 flex justify-center items-center">
+          <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
+            <iframe
+              id="avaturn-iframe"
+              className="vto-frame"
+              allow="camera *; microphone *"
+            />
+          </div>
+          <div
+            id="unity-container"
+            className={`absolute 
         ${
           uiState === 4
             ? isRecording
@@ -183,10 +185,10 @@ export default function VirtuvidApp({
         }
         
         `}
-        >
-          <Unity
-            unityProvider={unityWebGL.unityProvider}
-            className={`
+          >
+            <Unity
+              unityProvider={unityWebGL.unityProvider}
+              className={`
             ${
               uiState === 4
                 ? isRecording
@@ -196,9 +198,47 @@ export default function VirtuvidApp({
             }
             
             `}
-          />
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="h-full w-full                                                                                                                                                                                 flex justify-center items-center">
+          <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
+            <iframe
+              id="avaturn-iframe"
+              className="vto-frame"
+              allow="camera *; microphone *"
+            />
+          </div>
+          <div
+            id="unity-container"
+            className={`absolute 
+        ${
+          uiState === 4
+            ? isRecording
+              ? "z-10 w-[100%] h-[100%]"
+              : "z-30 top-[20%] w-[55%] h-[50%]"
+            : "z-10 w-[100%] h-[100%]"
+        }
+        
+        `}
+          >
+            <Unity
+              unityProvider={unityWebGL.unityProvider}
+              className={`
+            ${
+              uiState === 4
+                ? isRecording
+                  ? "w-full h-full "
+                  : "w-full h-full rounded-3xl"
+                : "w-full h-full "
+            }
+            
+            `}
+            />
+          </div>
+        </div>
+      )}
       <Script src="data/Global.js" />
       <Script src="data/AvaturnFrame.js" />
       <Script src="Build/builder.loader.js" />
