@@ -66,6 +66,7 @@ export default function VirtuvidApp({
   const backToStartFn = () => {
     unityWebGL.sendMessage("UIController", "RecordStopFn");
     unityWebGL.sendMessage("UIController", "FullBodyCamFn");
+    unityWebGL.sendMessage("UIController", "ResetAvatarFn");
     if (uiState === 3) {
       unityWebGL.sendMessage("UIController", "AnimOffFn");
       setUiState(1);
@@ -95,80 +96,74 @@ export default function VirtuvidApp({
   }, [unityWebGL.isLoaded]);
 
   return (
-    <main>
-      {/* Loading Side */}
-      <LoadingWeb unityWebGL={unityWebGL} />
-
-      {/* StartUI Side */}
-      {unityWebGL.isLoaded ? (
-        uiState !== 1 ? null : (
-          <StartUiWeb setTemplate={setTemplate} unityWebGL={unityWebGL} />
-        )
-      ) : null}
-
-      {/* Template Side */}
-      {isTemplate ? (
-        uiState !== 2 ? null : (
-          <TemplateWeb
-            setStartUi={setStartUi}
-            setTemplate={setTemplate}
-            setMainUi={setMainUi}
-            unityWebGL={unityWebGL}
-          />
-        )
-      ) : null}
-
-      {/* MainUI Side */}
-      {isMainUi ? (
-        uiState !== 3 ? null : (
-          <MainUiWeb unityWebGL={unityWebGL} />
-        )
-      ) : null}
-
-      {/* Recording Loading Side */}
-      {uiState === 4 ? (
-        isRecording ? (
-          <RecordingLoading animtime={animtime} isRecording={isRecording} />
-        ) : null
-      ) : null}
-
-      {/* ExportUI Side */}
-      {uiState === 4 ? (
-        isRecording ? null : (
-          <ExportUiWeb unityWebGL={unityWebGL} />
-        )
-      ) : null}
-
-      {/* BackBtn Side */}
-      {uiState >= 3 ? (
-        uiState !== 5 ? (
-          <button
-            onClick={backToStartFn}
-            className="fixed w-8 h-8 z-50 top-12 left-4 flex flex-col items-center justify-center bg-stone-900 text-white rounded-full"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2.5"
-              stroke="currentColor"
-              className="w-4 h-4"
+    <main {...props}>
+      <div className="absolute right-0 left-0 top-0 bottom-0">
+        {" "}
+        {/* Loading Side */}
+        <LoadingWeb unityWebGL={unityWebGL} />
+        {/* StartUI Side */}
+        {unityWebGL.isLoaded ? (
+          uiState !== 1 ? null : (
+            <StartUiWeb setTemplate={setTemplate} unityWebGL={unityWebGL} />
+          )
+        ) : null}
+        {/* Template Side */}
+        {isTemplate ? (
+          uiState !== 2 ? null : (
+            <TemplateWeb
+              setStartUi={setStartUi}
+              setTemplate={setTemplate}
+              setMainUi={setMainUi}
+              unityWebGL={unityWebGL}
+            />
+          )
+        ) : null}
+        {/* MainUI Side */}
+        {isMainUi ? (
+          uiState !== 3 ? null : (
+            <MainUiWeb unityWebGL={unityWebGL} />
+          )
+        ) : null}
+        {/* Recording Loading Side */}
+        {uiState === 4 ? (
+          isRecording ? (
+            <RecordingLoading animtime={animtime} isRecording={isRecording} />
+          ) : null
+        ) : null}
+        {/* ExportUI Side */}
+        {uiState === 4 ? (
+          isRecording ? null : (
+            <ExportUiWeb unityWebGL={unityWebGL} />
+          )
+        ) : null}
+        {/* BackBtn Side */}
+        {uiState >= 3 ? (
+          uiState !== 5 ? (
+            <button
+              onClick={backToStartFn}
+              className="absolute w-8 h-8 z-50 top-10 left-4 flex flex-col items-center justify-center bg-stone-900 text-white rounded-full"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-              />
-            </svg>
-          </button>
-        ) : null
-      ) : null}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                />
+              </svg>
+            </button>
+          ) : null
+        ) : null}
+      </div>
 
       {/* Unity Side */}
-      <div
-        id="canvas-wrap"
-        className="h-screen w-screen                                                                                                                                                                                 flex justify-center items-center"
-      >
+      <div className="h-full w-full                                                                                                                                                                                 flex justify-center items-center">
         <div id="avaturn-container" className="absolute h-[100%] w-[100%]">
           <iframe
             id="avaturn-iframe"
@@ -191,7 +186,7 @@ export default function VirtuvidApp({
         >
           <Unity
             unityProvider={unityWebGL.unityProvider}
-            className={`absolute 
+            className={`
             ${
               uiState === 4
                 ? isRecording

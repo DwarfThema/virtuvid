@@ -30,21 +30,22 @@ export default function TemplateWeb({
     setTemplate(false);
     setMainUi(true);
     setStartUi(false);
+    unityWebGL.sendMessage("UIController", "ResetAvatarFn");
     unityWebGL.sendMessage("UIController", "TemplateFinFn", currentIndex);
 
     setCurrentIndex(Math.floor(TemplateAssets.length / 2));
   };
 
   return (
-    <div className="fixed w-full h-full z-40 flex flex-col items-center justify-center pb-[22%] bg-stone-900 text-white">
+    <div className="absolute w-full h-full z-40 flex flex-col items-center justify-center bg-red-900 text-white">
       <button
-        className="absolute w-full h-full z-30"
+        className="absolute w-screen h-screen z-30 bg-stone-900"
         onClick={() => {
           setUiState(1);
           setTemplate(false);
         }}
       />
-      <div className="absolute flex flex-row justify-center h-[70%] z-40">
+      <div className="absolute flex flex-row justify-center h-[70%] z-40 top-[8%]">
         {TemplateAssets.map(({ title, videoUrl }, i) => (
           <motion.div
             key={i}
