@@ -1,8 +1,18 @@
 import { uiStateAtom } from "@/libs/client/recoilAtom";
 import { TemplateAssets } from "@/libs/client/templateAssets";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
+
+interface Video {
+  id: number;
+  url: string;
+}
+
+interface VideoPlayerProps {
+  videos: Video[];
+  currentIndex: number;
+}
 
 export default function TemplateWeb({
   setTemplate,
@@ -36,6 +46,25 @@ export default function TemplateWeb({
     setCurrentIndex(Math.floor(TemplateAssets.length / 2));
   };
 
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    // 현재 인덱스의 비디오 재생
+    const currentVideo = videoRefs.current[currentIndex];
+    if (currentVideo) {
+      currentVideo
+        .play()
+        .catch((error) => console.error("Auto-play error:", error));
+    }
+
+    // 다른 모든 비디오 멈춤
+    videoRefs.current.forEach((video, index) => {
+      if (index !== currentIndex && video) {
+        video.pause();
+      }
+    });
+  }, [currentIndex]);
+
   return (
     <div className="absolute w-full h-full z-40 flex flex-col items-center justify-center bg-red-900 text-white">
       <button
@@ -64,7 +93,7 @@ export default function TemplateWeb({
             >
               <video
                 src={videoUrl}
-                autoPlay
+                ref={(el) => (videoRefs.current[i] = el)}
                 loop
                 playsInline
                 controlsList="nodownload nofullscreen"
@@ -75,7 +104,7 @@ export default function TemplateWeb({
         ))}
       </div>
       <button
-        className="absolute bottom-[12%] bg-white text-black px-[16px] py-1 flex justify-center items-center rounded-full z-40"
+        className="absolute bottom-[10%] bg-white text-black px-[16px] py-1 flex justify-center items-center rounded-full z-40"
         onClick={handleNext}
       >
         <span className="block mr-1 font-semibold">Next</span>
