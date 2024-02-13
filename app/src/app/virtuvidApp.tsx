@@ -144,7 +144,7 @@ export default function VirtuvidApp({
           uiState !== 5 ? (
             <button
               onClick={backToStartFn}
-              className="absolute w-8 h-8 z-50 top-10 left-4 flex flex-col items-center justify-center bg-stone-900 text-white rounded-full"
+              className="absolute w-8 h-8 z-50 top-[5%] left-4 flex flex-col items-center justify-center bg-stone-900 text-white rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
