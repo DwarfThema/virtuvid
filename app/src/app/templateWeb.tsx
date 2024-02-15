@@ -2,6 +2,7 @@ import { uiStateAtom } from "@/libs/client/recoilAtom";
 import { TemplateAssets } from "@/libs/client/templateAssets";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
 import { useRecoilState } from "recoil";
 
 interface Video {
@@ -66,7 +67,11 @@ export default function TemplateWeb({
   }, [currentIndex]);
 
   return (
-    <div className="absolute w-full h-full z-40 flex flex-col items-center justify-center bg-red-900 text-white">
+    <div
+      className={`${
+        isMobile ? `fixed` : `absolute`
+      }  w-full h-full z-40 flex flex-col items-center justify-center bg-red-900 text-white`}
+    >
       <button
         className="absolute w-screen h-screen z-30 bg-stone-900"
         onClick={() => {
