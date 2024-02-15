@@ -2,6 +2,7 @@ import { camStateAtom, uiStateAtom } from "@/libs/client/recoilAtom";
 import Image from "next/image";
 import { useRecoilState } from "recoil";
 import Logo from "../../../public/app/Virtuvid_Logo_White.png";
+import { useEffect } from "react";
 
 export default function MainUiWeb({ unityWebGL }: { unityWebGL: any }) {
   const [uiState, setUiState] = useRecoilState(uiStateAtom);
@@ -28,6 +29,10 @@ export default function MainUiWeb({ unityWebGL }: { unityWebGL: any }) {
     unityWebGL.sendMessage("UIController", "RecordFn");
     setUiState(4);
   };
+
+  useEffect(() => {
+    setCamState(0);
+  }, []);
 
   return (
     <div className="absolute w-full h-full z-30 flex flex-col items-center justify-center  text-white  font-medium">

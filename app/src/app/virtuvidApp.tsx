@@ -66,21 +66,21 @@ export default function VirtuvidApp({
   //ref For BackWard
   const backToStartFn = () => {
     unityWebGL.sendMessage("UIController", "ResetAvatarFn");
-    unityWebGL.sendMessage("UIController", "RecordStopFn");
     unityWebGL.sendMessage("UIController", "FullBodyCamFn");
+    unityWebGL.sendMessage("UIController", "AnimResetFn");
+    unityWebGL.sendMessage("UIController", "RestartAudio");
     if (uiState === 3) {
-      unityWebGL.sendMessage("UIController", "ResetAvatarFn");
       unityWebGL.sendMessage("UIController", "AnimOffFn");
       setUiState(1);
     }
     if (uiState >= 4) {
-      setUiState(3);
-      unityWebGL.sendMessage("UIController", "ResetAvatarFn");
       unityWebGL.sendMessage("UIController", "RecordStopFn");
-      unityWebGL.sendMessage("UIController", "FullBodyCamFn");
+      setUiState(3);
     }
     setRecording(false);
   };
+
+  useEffect(() => {}, [uiState]);
 
   //ref For Listener
   useEffect(() => {
