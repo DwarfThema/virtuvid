@@ -15,7 +15,7 @@ export default function RecordingLoading({
       id="UI-Recording"
       className="absolute w-full h-full z-30 flex flex-col items-center justify-center text-white bg-stone-900 bg-opacity-50 font-extrabold"
     >
-      <div className="flex flex-col items-center justify-end h-[70%] w-[80%]">
+      <div className="flex flex-col items-center justify-start h-[70%] w-[80%]">
         <p className="text-[15px] font-semibold">녹화 중입니다...</p>
         <div
           id="progress"

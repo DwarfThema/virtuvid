@@ -10,7 +10,8 @@ export const uiStateAtom = atom({
 1 : Start (Avatar / template)
 2 : Template
 3 : Main (Camera / Recording)
-4 : Record Loading / Export
+4 : Record Loading
+5 : Export
 */
 
 export const camStateAtom = atom({

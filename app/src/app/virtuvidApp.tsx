@@ -123,8 +123,12 @@ export default function VirtuvidApp({
         ) : null}
         {/* MainUI Side */}
         {isMainUi ? (
-          uiState !== 3 ? null : (
-            <MainUiWeb unityWebGL={unityWebGL} />
+          uiState !== 3 ? (
+            uiState !== 4 ? null : (
+              <MainUiWeb unityWebGL={unityWebGL} isRecording={isRecording} />
+            )
+          ) : (
+            <MainUiWeb unityWebGL={unityWebGL} isRecording={isRecording} />
           )
         ) : null}
         {/* Recording Loading Side */}
